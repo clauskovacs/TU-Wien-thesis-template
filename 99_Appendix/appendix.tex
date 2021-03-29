@@ -1,0 +1,139 @@
+% Appendix
+
+\appendix
+%\appendixpage		% add an extra 'Appendix' at the beginning of the appendix
+%\addappheadtotoc	% add an extra entry with 'Appendix' to the TOC
+\begin{appendices}
+	% change the headline for the appendix (Appendix on left side of even page ...)
+	\renewcommand*{\sectionmarkformat}{}	% remove numbers of sections (left
+											% side of uneven pages) in the header
+	\lehead{Appendix}
+	\automark{section}
+	\rohead{\leftmark}
+
+	%Appendix
+	\label{sec:appendix.appendix}
+
+	\section[First Part of the Appendix]{\fontsize{\customSecFontSize}{55}\selectfont Appendix \Alph{section}}
+		% add lof entry - entry before figs in this section
+%		\addtocontents{lof}{\vspace{\lofSecPreDist}\protect\subsubsection*{\hspace{\lofSecIndent}Appendix~\thesection~--~First Part of the Appendix}\vspace{\lofSecPostDist}}
+		\addtocontents{lot}{\vspace{\lofSecPreDist}\protect\subsection*{Appendix~\thesection~--~First Part of the Appendix (lot entry)}\vspace{\lofSecPostDist}}
+		\vspace{\customSecPreDistAppdx}
+		\begin{flushleft}
+			{\fontsize{\customSecFontSizeAdd}{\customSecLineDistAdd}\selectfont\bfseries First Part of the Appendix Which\linebreak
+			 Title May Span Over Multiple Lines\par}
+		\end{flushleft}
+		\vspace{\customSecPostDistAppdx}
+		\label{sec:appendix.extended_discussion_SCD}
+
+		\vspace{\dropCapSecVertDist}\lettrine{\color{\lettrineDropCapFontColor}{L}}{orem} ipsum dolor sit amet, consectetuer adipiscing elit. \blindtext[3]
+
+
+	\subsection{A Long Table}
+
+		%TBL: 	Average velocity in the center of the cell (flow channel) - parameter
+		%		variation (channel height and inlet pressure) - raw Comsol data
+
+		\def\arraystretch{1.02}
+
+		\begin{center}
+			\begin{longtable}{c c S[table-format=3.10] S[table-format=3.10] S[table-format=3.10]}
+
+				\caption[Parameter variation: raw data]{Raw Comsol data, rounded to ten decimal points
+								for all three simulations (extremely coarse,
+								normal and finer mesh) \( \hdots \)} \\
+
+				\label{tbl:appendix.param_variation_raw} \\
+
+				\hline
+
+				\multicolumn{1}{c}{\(h_{channel}\)}			&
+				\multicolumn{1}{c}{\(p_{inlet}\)}			&
+				\multicolumn{1}{c}{\(v\) (extr. coarse)}	&
+				\multicolumn{1}{c}{\(v\) (normal)}			&
+				\multicolumn{1}{c}{\(v\) (finer)} 			\\
+
+				\multicolumn{1}{c}{[\(\mu\)m]}				&
+				\multicolumn{1}{c}{\( [pa] \)}				&
+				\multicolumn{1}{c}{\( [mm/s] \)}			&
+				\multicolumn{1}{c}{\( [mm/s] \)}			&
+				\multicolumn{1}{c}{\( [mm/s] \)}			\\
+
+				\hline
+				\endfirsthead
+
+				\multicolumn{5}{c}%
+				{\tablename\ \thetable\ -- \textit{Continued from previous page}} \\
+
+				\hline
+
+				\multicolumn{1}{c}{\(h_{channel}\)}			&
+				\multicolumn{1}{c}{\(p_{inlet}\)}			&
+				\multicolumn{1}{c}{\(v\) (extr. coarse)}	&
+				\multicolumn{1}{c}{\(v\) (normal)}			&
+				\multicolumn{1}{c}{\(v\) (finer)} 			\\
+
+				\multicolumn{1}{c}{[\(\mu\)m]}				&
+				\multicolumn{1}{c}{\( [pa] \)}				&
+				\multicolumn{1}{c}{\( [mm/s] \)}			&
+				\multicolumn{1}{c}{\( [mm/s] \)}			&
+				\multicolumn{1}{c}{\( [mm/s] \)}			\\
+
+				\hline
+				\endhead
+
+				\hline \multicolumn{5}{r}{\textit{Continued on next page}} \\
+				\endfoot
+
+				\hline
+				\endlastfoot
+
+				10	&	100		&	0.2065585551	&	0.1974595454	&	0.1966434633	\\
+				10	&	150		&	0.309837725		&	0.2961892665	&	0.2949652472	\\
+				10	&	300		&	0.6196748077	&	0.592378232		&	0.5899308079	\\
+				10	&	500		&	1.0327899323	&	0.9872963473	&	0.9832187091	\\
+				10	&	1000	&	2.0655729232	&	1.9745892999	&	1.9664408949	\\
+				10	&	5000	&	10.3276143896	&	9.8728101374	&	9.8323399518	\\
+
+				15	&	100		&	0.4501041183	&	0.4400584574	&	0.4426568071	\\
+				15	&	150		&	0.675156149		&	0.6600879111	&	0.6639850358	\\
+				15	&	300		&	1.3503121425	&	1.3201771491	&	1.3279690133	\\
+				15	&	500		&	2.250519949		&	2.2002981741	&	2.2132793119	\\
+				15	&	1000	&	4.5010389536	&	4.4006108237	&	4.4265465164	\\
+				15	&	5000	&	22.5052003595	&	22.0035825551	&	22.1321927092	\\
+
+				30	&	100		&	1.7608342775	&	1.7210528953	&	1.7519508614	\\
+				30	&	150		&	2.6412246654	&	2.5816194859	&	2.6279176696	\\
+				30	&	300		&	5.2822780651	&	5.163469976		&	5.2557761712	\\
+				30	&	500		&	8.8033439105	&	8.6062533639	&	8.7594683892	\\
+				30	&	1000	&	17.6031157975	&	17.2144843816	&	17.5179055077	\\
+				30	&	5000	&	87.816910293	&	86.0786060542	&	87.5104946302	\\
+
+				50	&	100		&	4.7899729456	&	4.7537010475	&	4.7853245749	\\
+				50	&	150		&	7.18388448		&	7.1299358194	&	7.1773112562	\\
+				50	&	300		&	14.3597112505	&	14.254915962	&	14.3494183917	\\
+				50	&	500		&	23.9093798123	&	23.743130189	&	23.900638864	\\
+				50	&	1000	&	47.6690582307	&	47.3847762728	&	47.7053389571	\\
+				50	&	5000	&	229.6231749285	&	231.4321893056	&	233.782080177	\\
+
+				75	&	100		&	10.2296047540	&	10.2154419861	&	10.3428987891	\\
+				75	&	150		&	15.3141629199	&	15.3034270834	&	15.4942445884	\\
+				75	&	300		&	30.3887136764	&	30.4485495693	&	30.8319115507	\\
+				75	&	500		&	50.017453526	&	50.3377209281	&	50.9943159468	\\
+				75	&	1000	&	96.6877203862	&	98.5843722859	&	100.0783458248	\\
+				75	&	5000	&	390.369440082	&	425.5421557856	&	440.6875949535	\\
+
+				100	&	100		&	16.6930498583	&	16.7394004902	&	16.9749464661	\\
+				100	&	150		&	24.7361995170	&	24.9109767915	&	25.2649772435	\\
+				100	&	300		&	47.5775730944	&	48.5735648802	&	49.3085854281	\\
+				100	&	500		&	75.2995589421	&	78.3999944765	&	79.7335539588	\\
+				100	&	1000	&	134.9204856856	&	146.1303871869	&	149.3794829469	\\
+				100	&	5000	&	443.0048291431	&	521.8584534842	&	543.7326764411	\\
+			\end{longtable}
+		\end{center}
+
+		\def\arraystretch{1.00}	% reset arraystretch (distance between lines in the table)
+
+		\blindtext[10]
+
+\end{appendices}

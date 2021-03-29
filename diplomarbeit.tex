@@ -1,0 +1,99 @@
+\documentclass[
+	fontsize = 10.0pt,
+	a4paper,
+	twoside,
+	paper = letter,
+	headings = big,
+	DIV = calc,
+	cleardoublepage = current,	% \cleardoublepage -> display page number here
+	headsepline = true, 
+	titlepage = on,
+	draft = false,
+	index = totoc,
+	parskip = half*,
+	numbers = noenddot
+]{scrartcl}
+
+% usepackage includes, typesetting variables/settings, debug settings etc.
+\input{packages_include_and_settings.tex}
+
+% tikz/pgf plot settings (image width, axes formatting, ...) and tikz macros
+\input{variables_definitions/tikz_pgf_settings_and_functions.tex}
+
+\begin{document}
+	\pagenumbering{roman}		% roman page numbering
+
+	\thispagestyle{empty}		% remove header on this page
+
+	% titlepage
+	\input{0_Titlepage/titlepage.tex}
+
+	% set separate margins for the acknowledgements and the abstract
+	\newgeometry{left = 50mm, right = 50mm, top = 7.0cm, bottom = 7.0cm}
+	\pagestyle{empty}	% remove header and footer
+	\cleardoublepage
+
+ 	% Acknowledgements
+	\begin{center}
+		{\Large\fontsize{14.5}{10}{\bfseries{\rmfamily{Acknowledgements}}}}\selectfont
+	\end{center}
+	\blindtext
+
+	% set distances: LOF/LOT/TOC-title and first entry
+	\addtocontents{toc}{\vspace{7.5mm}}	% set the space between TOC-title and first entry
+	\addtocontents{lot}{\vspace{2.5mm}}	% set the space between LOT-title and first entry
+	\addtocontents{lof}{\vspace{2.5mm}}	% set the space between LOF-title and first entry
+
+	% abstract (en, ger)
+	\input{abstract.tex}				% load the abstract file
+	\restoregeometry					% restore old page-margin settings
+	\pagestyle{plain}
+
+	% TOC	- table of contents
+	\cleardoublepage
+	\tableofcontents
+
+	\cleardoublepage
+	\pagenumbering{arabic}		% numerical page numbering from here on
+	\pagestyle{scrheadings}		% switch header on from here on
+	\thispagestyle{plain}		% remove header on this page
+	\input{1_Sec/section1-1.tex}
+
+	\cleardoublepage
+	\thispagestyle{plain}		% remove header on this page
+	\input{2_Sec/section2-1.tex}
+
+
+	\cleardoublepage
+	\thispagestyle{plain}		% remove header on this page
+	\input{3_Sec/section3-1.tex}% simple test cell: Methodology, Results and Discussion
+
+	\cleardoublepage
+	\thispagestyle{plain}		% remove header on this page
+	\input{4_Sec/section4-1.tex}
+
+	% appendix
+	\cleardoublepage
+	\thispagestyle{plain}		% remove header on this page
+	\input{99_Appendix/appendix.tex}
+
+	\pagestyle{plain}			% remove headers from here on
+
+	\newpage
+	\phantomsection				% correct page number for lof in the toc
+	\addcontentsline{toc}{section}{List of Figures}	% add LOF to the toc
+	\listoffigures				% LOF	- list of figures
+
+%	\newpage
+	\addcontentsline{toc}{section}{List of Tables}	% add LOT to the toc
+%	\vspace{15mm}				% vertical distance above LOT since LOT- and LOF-entries
+								% are on the same page
+	\newpage
+	\listoftables				% LOT 	- list of tables
+
+	% bibliography
+	\newpage%\tocloftpagestyle{empty}
+	\addcontentsline{toc}{section}{Bibliography}
+	\bibliographystyle{ieeetr}
+	\bibliography{diplomarbeit_bibliography}	% load the bibliography
+\end{document}

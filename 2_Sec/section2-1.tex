@@ -1,0 +1,232 @@
+% Section 2	- Fundamentals
+
+\section[Fundamentals]{\fontsize{\customSecFontSize}{55}\selectfont Section \arabic{section}}
+	% add lof entry - entry before figs in this section
+	\addtocontents{lof}{\vspace{\lofSecPreDist}\protect\subsection*{\hspace{\lofSecIndent}Section~\thesection~--~Fundamentals}\vspace{\lofSecPostDist}}
+	\addtocontents{lot}{\vspace{\lofSecPreDist}\protect\subsection*{Section~\thesection~--~Fundamentals}\vspace{\lofSecPostDist}}
+	\vspace{\customSecPreDist}
+	\begin{flushleft}
+		{\fontsize{\customSecFontSizeAdd}{\customSecLineDistAdd}\selectfont\bfseries Fundamentals\par}
+	\end{flushleft}
+	\vspace{\customSecPostDist}
+	\label{sec:sec2.fundamentals}
+
+	\vspace{\dropCapSecVertDist}\lettrine{\color{\lettrineDropCapFontColor}{B}}{landit} blandit mauris. \blindtext[1]
+
+	\subsection{Equations}
+
+	Inline usage with \( \partial^2 f / \partial x^2 = 0, \) or spanning over a whole line using
+	\[ a^2 + b^2 = c^2. \]
+	Equation\,\eqref{eq:sec2.internal_energy} shows an enumerated equation.
+	\begin{equation}\label{eq:sec2.internal_energy}
+		dU = \underbrace{TdS}_{\delta Q} -pdV + \sum_{i = 1}^{n} \mu_i dN_i + \hdots
+	\end{equation}
+
+	\begin{equation}
+		\mu_i = \Big( \frac{\partial U}{\partial N_i} \Big)_{S, V, N_{j \neq i}}
+	\end{equation}
+
+	Multi-line equation:
+	\begin{equation}
+	\label{eq:sec2.BV_equation}
+		\begin{split}
+			\hdots = i_0 \bigg( \frac{C_R(0, t)}{C_R^*}\,\mathrm{e}^{n(1-\alpha)f(E-E^0)}\mathrm{e}^{-nf(1-\alpha)(E_{eq}-E^0)} &- \\
+			-\frac{C_O(0, t)}{C_O^*}&\,\mathrm{e}^{-n\alpha f (E- E^0)}\mathrm{e}^{n\alpha f(E_{eq}-E^0)} \bigg)
+		\end{split}
+	\end{equation}
+
+	Another equation:
+	\begin{equation}
+		\label{eq:sec2.plane_hagen_poiseuille_flow_profile_avg_vel}
+		\overline{v} = \frac{1}{h} \int\limits_{0}^{h} v(z) \, dz = -\frac{1}{h} \int\limits_{0}^{h} \frac{1}{2\mu} \frac{dp}{dx} z\big(h-z\big) \, dz = -\frac{h^2}{12\mu} \frac{dp}{dx}.
+	\end{equation}
+
+	\subsection{Tables}
+		\textbf{Table 1:}
+		% TABLE:	Parameters used for the simulations (Equilibrium potentials, exchange current densities, etc.)
+		%
+		\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+		%
+		\begin{table}[H]
+			\centering
+			\caption[Electrochemical cell parameters used for COMSOL Multiphysics simulations]{\textbf{Electrochemical cell parameters used for COMSOL Multiphysics simulations}. Copper was used as a working electrode (WE) and platinum as a counter electrode (CE). Equilibrium potentials \mbox{(eq. pot.)} are referred against the standard hydrogen electrode (SHE) potential.}
+			\vspace*{\arryDistTblCap}	%	set distance between table and caption (TOP)
+			%								(set in tikz_pgf_settings_and_functions.tex)
+			%
+			\newcommand{\hcite}{\hspace{-3mm}}	% shift of citations to the left
+			%
+		%	\begin{tabular}{| P{30mm} | S[table-format=3.4] | L{8mm} | L{62mm} |}	% table formatting
+			\begin{tabular}{ P{30mm}  S[table-format=3.4]  L{9mm}  L{62mm} }	% table formatting
+				\hline
+				% header (first line formatting)
+				\noalign{\vskip 0.5mm}	% small vertical whitespace
+				\multicolumn{1}{>{\centering\arraybackslash}m{30mm}}{Property}	& \multicolumn{2}{c}{Value}											&	\multicolumn{1}{>{\centering\arraybackslash}m{62mm}}{Description}	\\
+				\noalign{\vskip 0.25mm}	% small vertical whitespace
+				\hline
+				\noalign{\vskip 0.5mm}	% small vertical whitespace
+				\( E_{eq, CE} \) [\SI{}{\volt}]						& 1.188		& \hcite\cite{Corrosion_and_prot_eq_pot}							&	\hspace{1cm}Eq. pot. CE against SHE at \celsiustemp{25}				\\
+				\( E_{eq, WE} \) [\SI{}{\volt}]						& 0.52		& \hcite\cite{Haynes2010, bard1985standard}							&	\hspace{1cm}Eq. pot. WE against SHE									\\
+				\( \sigma \) [\SI{}{\siemens\per\metre}]			& 4.8		& \hcite\cite{Darling1964, hdbkofchem_physics1989, LeeRodkey1966}	&	\hspace{1cm}Electrolyte conductivity								\\
+				\( i_{0, CE} \) [\SI{}{\ampere\per\square\metre}]	& 10.0		& \hcite\cite{LandoltBornstein2007, Markovi1997}					&	\hspace{1cm}Exchange current density of CE							\\
+				\( i_{0, WE} \) [\SI{}{\ampere\per\square\metre}]	& 240.0		& \hcite\cite{LandoltBornstein2007}									&	\hspace{1cm}Exchange current density of WE							\\
+				\noalign{\vskip 0.5mm}	% small vertical whitespace
+				\hline
+			\end{tabular}
+			\label{tab:sec2.e_cell__parameters}
+			\vspace{\arryDistTblTextBot}	% 	set distance between table and text (BOTTOM)
+			%									(set in tikz_pgf_settings_and_functions.tex)
+		\end{table}%
+
+		\textbf{Table 2:}
+		% TABLE: evaluation of fit parameters (polynomial regression)
+		%
+		% Degree	... 	polynomial degree
+		% OCV		... 	point of intersection with x-axis (open-circuit voltage)
+		% RSS		...		residual sum of squares
+		% res min	...		value of the minimum residual
+		% res max	...		value of the maximum residual
+		%
+		% calculated using:	generators/test_cell__potential_variation(time_dep_study__conc_trace)/
+		%					/polynomial_fit.py
+		%
+		\begin{table}[H]
+			\centering
+			\caption[Parameters of the polynomial regression for the OCV extraction]{\textbf{Parameters of the polynomial regression for the OCV extraction}. Depending on the fitted polynomial degree this table shows the extracted value of the open-circuit voltage (OCV), the residual sum of squares (RSS) as well as the minimum and maximum residual, with the latter two parameters representing the smallest and largest difference between fit values and simulation values.}
+			\vspace*{\arryDistTblCap}	%	set distance between table and caption (TOP)
+			%								(set in tikz_pgf_settings_and_functions.tex)
+			%
+			\begin{tabular}[t]{c  c  c  c  c}	% all cells with centred text
+				\hline
+				% header (first line formatting)
+				\noalign{\vskip 0.5mm}	% small vertical whitespace
+				Degree	& OCV [\SI{}{\volt}]	& RSS			& Min Residual	& Max Residual	\\
+				\noalign{\vskip 0.25mm}	% small vertical whitespace
+				\hline
+				\noalign{\vskip 0.5mm}	% small vertical whitespace
+				3		& -0.6679200			& 2.157771		& -0.47858		& 0.66207		\\
+				4		& -0.6678310			& 0.134413		& -0.15257		& 0.13551		\\
+				5		& -0.6679710			& 0.014278		& -0.03977		& 0.03924		\\
+				6		& -0.6679926			& 0.000694		& -0.02013		& 0.00738		\\
+				7		& -0.6679950			& 0.000540		& -0.01786		& 0.00521		\\
+				8		& -0.6679950			& 0.000467		& -0.01685		& 0.00590		\\
+				9		& -0.6679980			& 0.000380		& -0.01441		& 0.00658		\\
+				10		& -0.6679980			& 0.000380		& -0.01409		& 0.00688		\\
+				\noalign{\vskip 0.5mm}	% small vertical whitespace
+				\hline
+			\end{tabular}
+			\label{tab:sec2.simple_test_cell_fit_params}
+			\vspace{\arryDistTblTextBot}	% 	set distance between table and text (BOTTOM)
+			%									(set in tikz_pgf_settings_and_functions.tex)
+		\end{table}%
+
+		\textbf{Table 3:}
+		% TABLE: 	Dependent variables and their amount depending on the utilised
+		%			COMSOL Multiphysics module
+		%
+		\begin{table}[H]
+			\centering
+			\caption[Dependent variables depending on the used COMSOL Multiphysics module]{\textbf{Dependent variables depending on the used COMSOL Multiphysics module}. For the three physics modules \textit{laminar flow}, \textit{transport of diluted species} and \textit{electrochemistry} the second column lists the respective dependent variables and the third column the total amount of dependent variables for each module.}
+			\vspace*{\arryDistTblCap}	%	set distance between table and caption (TOP)
+			%								(set in tikz_pgf_settings_and_functions.tex)
+			%
+			\newcommand{\toLeft}{\hspace{-2.5mm}}	% shift of citations to the left
+			%
+			\begin{tabular}{ l r l c c }		% table formatting
+				\hline
+				% header (first line formatting)
+				\noalign{\vskip 0.5mm}	% small vertical whitespace
+				\multirow{2}{*}{Physics module}	&	\multicolumn{2}{c}{\multirow{2}{*}{Dependent variables}}	&	Amount of			\\
+												&	\multicolumn{2}{c}{}										&	dependent variables	\\
+				\noalign{\vskip 0.25mm}	% small vertical whitespace
+				\hline
+				\noalign{\vskip 0.5mm}	% small vertical whitespace
+				\multirow{2}{*}{Laminar flow}	& 	Velocity 			&\toLeft \( \bm{u}(u,v,w) \)			&	\multirow{2}{*}{4}	\\
+												& 	Pressure 			&\toLeft \( p\)							&						\\
+				\noalign{\vskip 1.0mm}	% small vertical whitespace
+				Transport of diluted species	& 	Concentration 		&\toLeft c								&	1					\\
+				\noalign{\vskip 1.0mm}	% small vertical whitespace
+				Electrochemistry				& 	Liquid potential	&\toLeft \( \phi_l \)					&	1					\\
+				\noalign{\vskip 0.5mm}	% small vertical whitespace
+				\hline
+			\end{tabular}
+			\label{tab:sec2.DOFs_depending_on_physics}
+			\vspace{\arryDistTblTextBot}	% 	set distance between table and text (BOTTOM)
+			%									(set in tikz_pgf_settings_and_functions.tex)
+		\end{table}%
+
+	\clearpage
+	\subsection{Figures}
+
+		\textbf{Single figure using LaTeX}
+		% FIG:	 Example bin for which scattered electrons are collected into
+		%
+		\begin{figure}[H]%
+			\centering
+			\subfloat{\input{2_Sec/figures/example_bin_backscatter}}%
+			\caption[Example bin: $\theta,\phi \in \lbrack40\,^\circ:70\,^\circ\rbrack$]{Example bin: $\theta,\phi \in \lbrack 40\,^\circ:70\,^\circ\rbrack$.}
+			\label{fig:sec2.example_bin_backscatter}
+		\end{figure}
+
+		\textbf{Two figures next to each other}
+
+		Generation of figures using functions and from read text files:
+		% FIG:	COMSOL simulations: time-dependent study with varying applied potential at WE to determine
+		%		the (exact) value of the open-circuit voltage (OCV)
+		%
+		\begin{figure}[H]%
+			\hspace{\initDistDblImg}	% shift both figures to the left
+			\hspace{3mm}				% adjust space before figures
+			%
+			\centering
+			%
+			% LEFT FIGURE: evolution of concentration in the cell with time
+			%
+			\subfloat[\label{fig:sec2.simple_test_cell_time_dep_study_OCV_extract_left}]
+				{\input{2_Sec/figures/simple_test_cell__potential_variation_conc_tds}}%
+			%
+			\hspace{\distDblImgBetween}
+			\hspace{5mm}				% adjust space between figures
+			%
+			% RIGHT FIGURE: extracted values (slope vs. applied potential) incl. polynomial fit
+			%
+			\subfloat[\label{fig:sec2.simple_test_cell_time_dep_study_OCV_extract_right}]
+				{\input{2_Sec/figures/simple_test_cell__slope_vs_appl_pot_incl_fit}}%
+			\caption[Total concentrations with varying applied potential incl. polynomial regression]{\textbf{Total concentrations with varying applied potential inclusive polynomial \mbox{regression}}. The applied potential at the working electrode was varied between \SI{-0.8}{\volt} and \SI{-0.6}{\volt} in steps of \SI{0.01}{\volt} while the total concentration in the cell was tracked. (a) shows a selection of results obtained from these simulations and (b) shows the extracted slopes as well as a fit using a polynomial with tenth degree.}
+			\label{fig:sec2.simple_test_cell_time_dep_study_OCV_extract_both}
+		\end{figure}
+
+	\clearpage
+	\subsection{Pictures}
+
+		% sample holder for the low-temperature measurements
+		\begin{figure}[!h]
+			\centering
+			\subfloat[]{\includegraphics[width=0.48\textwidth]{2_Sec/figures/20170316_112538.jpg}\label{fig:sec2.sample_holder_a}}
+			\hfill
+			\subfloat[]{\includegraphics[width=0.48\textwidth]{2_Sec/figures/20170316_112550.jpg}\label{fig:sec2.sample_holder_b}}
+			\caption[Sample holder for low-temperature measurements]{Sample holder for the low-temperature measurements. The top side (a) where the grease and sample is placed on a platform made of silver, and the bottom side (b) with the heater (thin film metal resistor 10\,k\(\Omega\)) \mbox{and  thermometer} (RuO2 2.7\,k\(\Omega\)). Please note the four wires (Pt0.9Ir0.1) connecting thermometer and heater each to utilize the 4-point probes method.}
+			\label{fig:sec2.sample_holder_both}
+		\end{figure}
+
+	\subsection{Indented Source Code}
+		%https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.leastsq.html
+		\verbdef\leastsq{leastsq}
+		\verbdef\optimize{scipy.optimize}
+
+		The fit is performed using the function \leastsq\hspace{3px}from the package \optimize\hspace{3px} which takes a function to minimize, initial parameter guesses, the data to fit and some optional arguments as parameter values. For example, the function used to fit \( T_{P_{on}} \) of the two-tau model is given by
+\begin{Verbatim}[tabsize=4]
+def f(x, K_g, C_s):
+	p3 = P_0/K_w+T_0
+	alpha = K_w/(2*C_p)+K_g/(2*C_s)+K_g/(2*C_p)
+	beta = np.sqrt((C_s*K_w+K_g*C_p+C_s*K_g)**2/(4*C_s**2*C_p**2)- \
+		(K_g*K_w)/(C_s*C_p))
+	return (P_0/(2*K_w*beta))*((alpha-beta)*np.exp(-x*(alpha+beta))- \
+		(alpha+beta)*np.exp(-x*(alpha-beta)))+p3
+\end{Verbatim}
+
+	\subsection{Colors}
+	% define the colors
+	\definecolor{red}{RGB}		{255,	0,		0}
+	\definecolor{green}{RGB}	{0,		255,	0}
+	\definecolor{blue}{RGB}		{0, 	0, 		255}
+	\textcolor{red}{red} \textcolor{green}{green} \textcolor{blue}{blue}

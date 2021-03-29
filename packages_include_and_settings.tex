@@ -1,0 +1,320 @@
+% load packages (\usepackage)
+% set typesetting variables / settings
+% debug settings (show over-/underfull boxes), show pagemargins
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% DEBUGGING %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{showframe}		% show page margins
+%\overfullrule = 5pt		% mark overfull boxes on the right side (black bar)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% DEBUGGING %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{etex}
+\pdfminorversion		= 5	% PDF (minor)version
+\pdfcompresslevel		= 9	% compresses streams as page descriptions
+\pdfobjcompresslevel	= 2	% compresses further data structures (requires PDF-1.5.)
+\usepackage{amsmath}		% Extrasymbols - split environment
+%\numberwithin{figure}{section}	% add number of sections to figures, e.g., Fig 1.x in sec one
+%\numberwithin{table}{section}	% same as above, for tables
+\usepackage{amssymb}		% Extrasymbols
+\usepackage{graphicx}		% Picture
+\usepackage{graphics}		% Picture
+\usepackage[latin1]{inputenc}  % mutated vowels
+% \usepackage{titlesec}		% change headings
+\usepackage{xcolor}			% define custom colors (\definecolor)
+\usepackage[skip = 5pt, hypcap = false, font = small]{caption}
+	%font = scriptsize, footnotesize, small, normalsize, large or Large
+% \captionsetup[subfloat]{captionskip=5pt}
+	% distance picture to caption (=`(a)`)
+% \usepackage{titleps}		% Headers und Footers bearbeiten
+\usepackage[protrusion = true, expansion = true]{microtype}
+\usepackage{wrapfig}		% (float images in text)
+\usepackage[titletoc]{appendix}
+\usepackage[percent]{overpic}
+\usepackage{lmodern}
+%  \usepackage{kpfonts}
+% \usepackage[nottoc, notlot, notlof]{tocbibind}
+\usepackage{tabularx}
+%\usepackage{tocloft}		% formatting of table of contents/figues
+\usepackage{epstopdf}
+\usepackage[hcentering,
+			bindingoffset  =  8 mm,	% binding offset inner side of page
+			marginparwidth = 25 mm,	% width of margin box
+			marginparsep   =  3 mm		% distance: written text <-> margin
+			]{geometry}
+
+\usepackage{setspace}
+\usepackage{mathtools}		% space in cases-environment
+\usepackage{bm}				% bold math
+\usepackage[version = 4]{mhchem}	% chemical arrows, reactions, ...
+\usepackage[T1]{fontenc}
+
+% lettrine (drop cap -> first letter big)
+% http://mirror.easyname.at/ctan/macros/latex/contrib/lettrine/doc/lettrine.pdf
+\usepackage{lettrine}
+\renewcommand{\LettrineTextFont}{\normalfont}
+\setlength{\DefaultNindent}{0pt}					% horizontal shift of indented lines
+\setlength{\DefaultFindent}{3pt}					% horizontal distance: dropcap <-> text
+\renewcommand*{\DefaultLoversize}{0.7}				% size of the first letter
+\setcounter{DefaultLines}{3}						% lines the drop cap takes (on the bottom)
+\newcommand{\lettrineDropCapFontColor}{black!50}	% font color of the drop cap letter
+\newcommand{\dropCapSecVertDist}{0mm}				% vertical distance: section <-> text
+
+% brackets larger than \Bigg
+\makeatletter
+\newcommand{\vast}{\bBigg@{4}}
+\newcommand{\Vast}{\bBigg@{5}}
+\newcommand{\vastl}{\mathopen\vast}
+\newcommand{\vastm}{\mathrel\vast}
+\newcommand{\vastr}{\mathclose\vast}
+\newcommand{\Vastl}{\mathopen\Vast}
+\newcommand{\Vastm}{\mathrel\Vast}
+\newcommand{\Vastr}{\mathclose\Vast}
+\makeatother
+
+\usepackage{tikz, tikz-3dplot, pgfplots, pgfplotstable}
+\usetikzlibrary{positioning}
+\usetikzlibrary{arrows.meta}
+%\usepgfplotslibrary{ternary}
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat = 1.9}
+% \usetikzlibrary{shadows, positioning}
+% \usetikzlibrary{backgrounds}
+% \usetikzlibrary{shapes, arrows, chains}	%flowcharts
+\usepackage[oldvoltagedirection]{circuitikz}	% electrical circuits
+%\usepackage[RPvoltages]{circuitikz}
+
+\usepackage{verbatim}		% comment environment
+	% multi-line comments (\begin{comment} Commented code \end{comment})
+\usepackage[skip = 5pt, hypcap = false, font = small]{caption}
+\usepackage[font = footnotesize]{subfig}
+	% font = scriptsize, footnotesize, small, normalsize, large or Large
+\usepackage{blindtext}					% dummy text
+\usepackage{siunitx}
+\usepackage{textcomp}
+\usepackage{chngcntr}
+% \usepackage{arydshln}					% dashed lines in tables
+\usepackage{dcolumn}
+\usepackage{fancyvrb}
+\usepackage[automark]{scrlayer-scrpage}	% set \leftmark and \rightmark automatically by \section and \subsection
+\usepackage{verbdef}					% http://ctan.org/pkg/verbdef
+\usepackage{calc}						% http://ctan.org/pkg/calc
+\usepackage{verbatimbox}				% verbatim in tikz node
+\usepackage{float}						% figures: option H - places the figure HERE
+\usepackage{longtable}					% tables over multiple pages
+\usepackage{array, booktabs}
+\usepackage[hidelinks]{hyperref}		% Links
+\hypersetup{colorlinks = false, linkcolor = black, citecolor = black} % colors of hyperref package
+\counterwithin{figure}{section}			% set this after loading hyperref
+\counterwithin{table}{section}			% set this after loading hyperref
+%\hypersetup{pageanchor = false}
+\usepackage{svg}						% load SVG files (needs Inkscape & shell-escape)
+\usepackage{enumitem}					% adjust vertical spacing in enumerate environments
+%\usepackage[letterspace=150]{microtype}
+\usepackage[version = 4]{mhchem}		% chemical formulas
+\usepackage{cite}						% multiple citation
+\usepackage{etoolbox}					% toggle -> at document start (to display additional information)
+\usepackage{multirow}					% multirow (merge rows in tabular environment)
+
+% margin notes
+\usepackage{marginnote}					% notes outside of page
+% color & font size of text
+\renewcommand*{\marginfont}{\color{black}\fontsize{5}{7}\selectfont}
+
+% figures & captions
+\usepackage{caption}
+\captionsetup{belowskip = -10.0pt}		% set padding of figures (distance:
+										% caption-text and the text following the
+										% figure)
+\captionsetup{format = hang}			% indent figure multi-line caption globally
+
+%%%%%%%%%%%%%%%%
+%%% TOC, LOF %%%
+%%%%%%%%%%%%%%%%
+% change the (vertical) distance between entries in the list of figures
+\addtocontents{lof}{\linespread{1.10}\selectfont}	% set the vertical distance between entries in the list of figs
+\addtocontents{lot}{\linespread{1.10}\selectfont}	% set the vertical distance between entries in the list of tables
+\addtocontents{toc}{\linespread{1.05}\selectfont}	% set the vertical distance between entries in the table of contents
+
+% vertical distance control in TOC (between entries)
+%\DeclareTOCStyleEntry[beforeskip=.5cm]{section}{section}
+\DeclareTOCStyleEntry[beforeskip=.1cm]{default}{subsection}
+\DeclareTOCStyleEntry[beforeskip=.075cm]{default}{subsubsection}
+\DeclareTOCStyleEntry[beforeskip=.05cm]{default}{paragraph}
+
+% distance TOC-title and first entry below
+% \setlength\cftaftertoctitleskip{50pt}
+%%%%%%%%%%%%%%%%
+
+\showboxdepth = \maxdimen
+\showboxbreadth = \maxdimen
+
+\newcommand{\hopxs}{\hspace{1px}}		% horizontal spacing of 1px
+
+% equations with outlined box
+\usepackage{empheq}
+\setlength\fboxsep{0.1cm}
+\newcommand*\widefbox[1]{\fbox{\hspace{1em}#1\hspace{1em}}}
+% equations with outlined box
+
+\renewcommand\appendixtocname{Appendix}  % rename appendix in the TOC
+\renewcommand\appendixpagename{Appendix} % rename appendix at the end
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
+
+\usetikzlibrary{patterns}				% filled surfaces with tikz
+\usetikzlibrary{backgrounds}			% TIKZ - stuff
+\usetikzlibrary{arrows}
+
+% \usepackage{geometry}  % edit space on the pages
+%\geometry{tmargin=25mm,bmargin=25mm,lmargin=15mm,rmargin=20mm} % set margins
+
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+% include section numbers in the equation numbering (e.g. (1.10))
+\numberwithin{equation}{section}
+
+% Header / Footer settings
+%
+% scrlayer-scrpage settings
+% \ihead{\leftmark} % section at the inner side
+% \ohead{\ifstr{\leftmark}{\rightmark}{}{\rightmark}} % subsection at the outer side
+
+\renewcommand*{\subsectionmarkformat}{}		% remove numbers, e.g., 2.3 of
+											% 2.3 Three–Electrode Setup
+											% on the right side of uneven pages
+
+% \newcommand*{\appendixmore}{%
+%   \renewcommand\sectionmark[1]{%
+% 	\ihead{\leftmark} % section at the inner side
+%     \ohead{\ifstr{\leftmark}{\rightmark}{}{\rightmark}}
+% }}
+
+% font of sections, TOC ...
+\addtokomafont{disposition}{\rmfamily}
+
+%\fussy
+%\sloppy
+\hfuzz = 5.0pt	% ignore Overfull hbox warnings with box sizes below 5pt
+
+% rename Figure, table of contents, bibliography, ...
+\renewcommand{\figurename}{Figure}
+\renewcommand{\listfigurename}{List of Figures}
+\renewcommand{\contentsname}{\Huge Contents}
+\renewcommand{\refname}{Bibliography}
+
+%\captionsetup[subfigure]{position=bottom, labelfont=small}
+%\captionsetup[figure]{labelfont=it,textfont={bf,it}}
+
+% change font size of section, subsection, ...
+% \setkomafont{section}{\LARGE}
+\setkomafont{subsection}{\large}
+%\setkomafont{subsubsection}{\tiny}
+%\setkomafont{paragraph}{\large}
+%\setkomafont{subparagraph}{\large}
+
+% change spacings after a \section
+\RedeclareSectionCommand[
+% 							afterindent = false,
+% 							beforeskip = \baselineskip,
+							afterskip = .75\baselineskip
+						]
+						{section}
+
+\setcounter{secnumdepth}{4}	% number depth of sections (e.g. 3 = max 1.1.1)
+\setcounter{tocdepth}{4}	% maximum depth to be listed in the TOC
+
+% \newcommand{\paragraphbrk}[1]{\paragraph{#1}\mbox{}\\}	% linebreak after \paragraphbrk{}
+
+% hide subsubsection in the TOC while remaining the counter in the document
+\newcommand{\hiddensubsubsection}[1]{
+    \stepcounter{subsubsection}
+    \subsubsection*{\bfseries\normalsize\arabic{section}.\arabic{subsection}.\arabic{subsubsection}\hspace{1ex}{#1}}
+}
+
+%\setlength{\belowcaptionskip}{25pt plus 3pt minus 2pt} % space between
+														% picture/caption
+
+% edit paragraphs (1.1.1.1 xyz)
+%
+% reduce vertical distance around the paragraphs
+\setlength\parskip{1em plus 0.1em minus 0.3em}
+
+% create a custom paragraph with an including automatically inserted linebreak
+\newcommand{\lnbrkparagraph}[1]{\paragraph{#1}\mbox{}\\}
+\newcommand{\lnbrkparagraphPostSkipDist}{-2.5mm}		% reduce distance: lnbrk <-> text bottom
+
+% create a custom subparagraph with an including automatically inserted linebreak
+\newcommand{\lnbrksubparagraph}[1]{\subparagraph{#1}\mbox{}\\}
+\newcommand{\lnbrksubparagraphPostSkipDist}{-2.5mm}		% reduce distance: lnbrk <-> text bottom
+
+
+% hide entries in TOC -> used in appendix: license
+\newcommand{\nocontentsline}[3]{}
+\newcommand{\tocless}[2]{\bgroup\let\addcontentsline = \nocontentsline#1{#2}\egroup}
+
+% bold equation reference (first line of caption which includes an equation reference)
+\newcommand{\beqref}[1]{\textbf{(\ref{#1})}}
+
+% change the formatting of sections (Section 1, next line -> text)
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+\makeatletter
+	\def\@seccntformat#1{\csname #1ignore\expandafter\endcsname\csname the#1\endcsname\quad}
+	\let\sectionignore\@gobbletwo
+	\let\latex@numberline\numberline
+	\def\numberline#1{\if\relax#1\relax\else\latex@numberline{#1}\fi}
+\makeatother
+%%% sec 1 - 4 %%%
+\newcommand{\customSecPreDist}{2.5mm}	% distance Section 1 <-> heading
+\newcommand{\customSecPostDist}{10mm}	% distance heading <-> text
+\newcommand{\customSecFontSize}{17}		% fontsize of ``Section 1''
+%
+\newcommand{\customSecFontSizeAdd}{20.0pt}		% fontsize of the text after the section
+\newcommand{\customSecLineDistAdd}{25pt}		% linespacing of the text after the section
+%
+%%% appendix %%%
+\newcommand{\customSecPreDistAppdx}{0mm}	% distance Appendix A <-> heading
+\newcommand{\customSecPostDistAppdx}{2.5mm}	% distance heading <-> text
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%%%%%%% ADD SECTION NAMES TO GROUP FIGS IN LIST OF FIGS %%%%%%%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% list of figures -> add x section, group the listed figures
+% group figs in list of figures (add space when new 'block' of figs from a section starts)
+%
+% retrieve the section name
+% \renewcommand\sectionmark[1]{%
+% 	\def\sectionname{#1}%
+% 	\markright{\thesection #1}
+% }
+
+%\let\Sectionmark\sectionmark
+%\def\sectionmark#1{\def\Sectionname{#1}\Sectionmark{#1}}
+% \bfseries Chapter~\thechapter~\Chaptername \vskip10pt}
+%
+% manipulate the listed figs
+%\preto\figure{%
+%  \ifnum\value{figure}=0\addtocontents{lof}{{\vskip10pt \bfseries \thesection~\Sectionname \vskip2.5pt}}\fi
+%}
+%
+% May be performed with the commented code above, but since this breaks the appendix entries, the entries in the lof
+% was done manually using '\addtocontents{lof}{\vspace{\lofSecPreDist}\protect\subsubsection*{Section~\thesection~--~...}\vspace{\lofSecPostDist}}'
+% at the beginnint of each section
+%
+% distances before & after the 'section-dividers (x section dividing blocks of figs.)' in the list of figures
+% section dividers (still uses subsec)
+\newcommand{\lofSecPreDist}{-3mm}		% distance before 'x section - ....'
+\newcommand{\lofSecPostDist}{-2mm}		% distance after  'x section - ....'
+\newcommand{\lofSecIndent}{0.0mm}		% indention of the lof subsec-entry
+%
+% subsection dividers (smaller font size)
+\newcommand{\lofSubSecPreDist}{-3.0mm}	% distance before 'x subsection - ....'
+\newcommand{\lofSubSecPostDist}{-2.0mm}	% distance after  'x subsection - ....'
+\newcommand{\lofSubSecIndent}{2.0mm}	% indention of the lof subsubsec-entry
+\newcommand{\lofSubSecFontA}{9.0}		% font size parameter 1
+\newcommand{\lofSubSecFontB}{11}		% font size parameter 2
+
+% footnote control (left aligned)
+\deffootnote[1em]{1em}{1em}{%
+	\textsuperscript{\makebox[1em][l]{\thefootnotemark}}}

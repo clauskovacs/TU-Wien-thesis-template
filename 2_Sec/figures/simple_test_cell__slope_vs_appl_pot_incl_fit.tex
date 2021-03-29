@@ -1,0 +1,62 @@
+% FIG:	COMSOL simulations: time-dependent study with varying applied potential at WE:
+%
+% extracted values: applied potential vs. slope
+%
+\begin{tikzpicture}[scale = \pScaleImgFactorDblImage*0.95, trim axis left, trim axis right]
+	\begin{axis}[
+ 					xmin  = -0.8,
+ 					xmax  = -0.6,
+   					xtick = {-0.80, -0.76,...,-0.6},
+					xmajorgrids,
+					xlabel = {Applied potential at WE [\SI{}{\volt}]},
+ 					ymin  = -50.00,
+ 					ymax  = 200.00,
+%  					ytick = {-40, 0, 40, 80},
+					ylabel = {Slope [\SI{}{\nano\mol\per\second}]},
+					ymajorgrids,
+					% zerofill the y-axis ticks
+					xticklabel style = {
+						/pgf/number format/fixed,
+						/pgf/number format/fixed zerofill,
+						/pgf/number format/precision = 2
+					},
+ 					legend cell align = {left},	% left align the legend entries
+					legend pos = north east
+				]
+
+		% read the data - extracted slope vs. applied potential
+		%
+		\pgfplotstableread[comment chars = {\%}]
+		{2_Sec/generators/test_cell_applied_pot_slope_simulation.txt}
+			\avgConcextremelyNormalab;
+
+		% SIMULATION DATA FROM COMSOL
+		\addplot [
+					color = black,
+					mark  = x,
+					mark size = 3.0,
+					only marks
+				]
+		table
+		[
+			x expr=\thisrowno{0},
+			y expr=\thisrowno{1},
+		] {\avgConcextremelyNormalab};
+		\addlegendentry{COMSOL}
+
+		% NUMERICAL FIT - polynom with degree = 10
+		%
+		% numerical fit:	a_n * x^n + a_(n-1) * x^(n-1) + ... + a_1 * x^1 + a_0
+		%
+		% add the plot (directly from the .py program)
+		\addplot[
+					solid,
+					samples = \samples,
+					no marks,
+					domain = -0.80:-0.60
+				]
+				{-325529.693360*x^10+-573607.060870*x^9+66757.565960*x^8+374041.732600*x^7+-225999.567900*x^6+-171925.347870*x^5+373596.771390*x^4+235387.314490*x^3+-132137.309440*x^2+-138497.155330*x^1+-30445.259211};
+				\addlegendentry{Polynomial deg(10)}
+
+	\end{axis}
+\end{tikzpicture}

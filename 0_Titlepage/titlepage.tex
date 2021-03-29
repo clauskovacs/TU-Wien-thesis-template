@@ -1,0 +1,45 @@
+\newcommand\projectType{Diplomarbeit}
+\newcommand\projectTitle{The Actual Title of the Thesis\\Which May Span Over\\Multiple Lines}
+
+\newgeometry{margin = 1.0cm}		% decrease the margin -> this centers the page horizontally!
+
+\begin{titlepage}
+	\centering
+ 	\vspace*{1.0cm}	% * ... move image above page margin
+
+  	\includesvg[height = 2.0cm]{0_Titlepage/figures/TU_Logo_Austria_black}
+
+	\vspace{2.0cm}
+
+	\fontsize{18.0pt}{20pt}\selectfont
+	\textsc{\projectType}
+
+	\vspace{17mm}
+
+	\fontsize{20pt}{28pt}\selectfont
+	\textsc{\lsstyle\projectTitle}
+
+	\vspace{10mm}
+
+	\fontsize{12pt}{18pt}\selectfont
+		Ausgeführt am Institut für Angewandte Physik\\
+		der Technischen Universität Wien
+
+	\vspace{2.0cm}
+
+	\fontsize{13pt}{18pt}\selectfont
+		unter der Anleitung von\\
+		{\scshape Ao.Univ.Prof. Dipl.-Ing. Dr.techn. John Doe}\\
+	\fontsize{10pt}{15pt}\selectfont
+		{und}\\
+	\fontsize{13pt}{18pt}\selectfont
+		{\scshape Ao.Univ.Prof. Dipl.-Ing. Dr.techn. Jane Doe}
+
+	\vspace{15.0mm}
+
+	\fontsize{12pt}{17pt}\selectfont
+		durch\\
+		{\scshape Jane Doe}
+\end{titlepage}
+
+\restoregeometry		% restore old page-margin settings

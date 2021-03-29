@@ -1,0 +1,78 @@
+% FIG:	 Example bin for which scattered electrons are collected into
+%
+% set viewport and define the variables
+\tdplotsetmaincoords{60}{110}
+
+\pgfmathsetmacro{\rvec}{0.8}
+
+\pgfmathsetmacro{\thetavec}{40}
+\pgfmathsetmacro{\thetavecTwo}{70}
+
+\pgfmathsetmacro{\phivec}{40}
+\pgfmathsetmacro{\phivecTwo}{70}
+
+% create the figure
+\begin{tikzpicture}[scale = 6, tdplot_main_coords]
+
+	\coordinate (O) at (0,0,0);
+
+	\draw[thick,->] (0,0,0) -- (0.9,0,0) node[anchor = north east]{$ \textit~{x} ( \theta = 90\,^\circ, \phi = 0\,^\circ)$};
+	\draw[thick,->] (0,0,0) -- (0,0.9,0) node[anchor = north west]{$ \textit~{y} ( \theta = 90\,^\circ, \phi = 90\,^\circ)$};
+	\draw[thick,->] (0,0,0) -- (0,0,0.9) node[anchor = south]{$ \textit~{z} ( \theta = 0\,^\circ, \phi = 0\,^\circ)$};
+
+	\tdplotsetcoord{P}{\rvec}{\thetavec}{\phivec}
+	\tdplotsetcoord{Q}{\rvec}{\thetavec}{\phivecTwo}
+
+	\tdplotsetcoord{P2}{\rvec}{\thetavecTwo}{\phivecTwo}
+	\tdplotsetcoord{P3}{\rvec}{\thetavecTwo}{\phivec}
+
+	\draw[-stealth,color = black] (O) -- (P);
+	\draw[dashed, color = black] (O) -- (Pxy);
+	\draw[dashed, color = black] (P) -- (Pxy);
+
+	\draw[-stealth,color = black] (O) -- (Q);
+	\draw[dashed, color = black] (O) -- (Qxy);
+	\draw[dashed, color = black] (Q) -- (Qxy);
+
+	\draw[-stealth,color = black] (O) -- (P2);
+	\draw[dashed, color = black] (O) -- (P2xy);
+	\draw[dashed, color = black] (P2) -- (P2xy);
+
+	\draw[-stealth,color = black] (O) -- (P3);
+	\draw[dashed, color = black] (O) -- (P3xy);
+	\draw[dashed, color = black] (P3) -- (P3xy);
+
+	\tdplotdrawarc[black, <->, thick]{(O)}{0.3}{0}{\phivec}{anchor = north}{$\phi_1$}
+	\tdplotsetthetaplanecoords{\phivec}
+
+	\tdplotdrawarc[tdplot_rotated_coords, <->, thick]{(0,0,0)}{0.5}{0}%
+	{\thetavec}{anchor=south west}{$\theta_1$}
+
+	\draw[tdplot_rotated_coords, black] (\rvec,0,0) arc (0:90:\rvec);
+	\tdplotsetthetaplanecoords{\phivecTwo}
+
+	\tdplotdrawarc[black, <->, thick]{(O)}{0.6}{0}{\phivecTwo}{anchor=north}{$\phi_2$}
+	\tdplotsetthetaplanecoords{\phivecTwo}
+
+	\tdplotdrawarc[tdplot_rotated_coords, <->, thick]{(0,0,0)}{0.6}{0}%
+	{\thetavecTwo}{anchor=south west}{$\theta_2$}
+
+	\draw[tdplot_rotated_coords, black] (\rvec,0,0) arc (0:90:\rvec);
+
+	\draw[black] (\rvec,0,0) arc (0:90:\rvec);
+
+	\draw [ultra thick, black] (P) arc (18:92:0.22);
+	\draw [ultra thick, black] (Q) arc (-50:-62.5:-3.5);
+	\draw [ultra thick, black] (P) arc (-61:-67.7:-7);
+	\draw [ultra thick, black] (P3) arc (21.5:90:0.345);
+
+	\begin{scope}[fill = yellow, opacity = 0.4]
+		\clip  (P3) arc (21.5:90:0.345) -- (-1.5,0.5) -- (P) arc (-61:-67.7:-7);
+		\clip  (Q) arc (-50:-62.5:-3.5) -- (1.0,0.5) -- (P) arc (18:92:0.22);
+		\fill (-1,-1) rectangle (1,1.2);
+	\end{scope}
+
+	%\draw [ultra thick, red, ->] (0,1) -- (0,0);
+	\draw[ultra thick, <-, green] (0,0,0) -- (0,0,0.4) node[anchor = north east]{incident electron beam};
+
+\end{tikzpicture}

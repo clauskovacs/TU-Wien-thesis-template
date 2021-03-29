@@ -1,0 +1,162 @@
+% FIG:	COMSOL simulations: time-dependent study with varying applied potential at WE:
+%
+% evolution of concentration using a time-dependent study depending on the applied potential
+% at the WE. Concentration does not directly start at zero (~10^-13) but has been plotted for simplicity
+%
+\begin{tikzpicture}[scale = \pScaleImgFactorDblImage, trim axis left, trim axis right]
+
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	%				RAW DATA			%
+	%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	% from generators/test_cell__potential_variation(time_dep_study__conc_trace)/slope_extract.ods
+	%
+	%
+	% define slopes here
+	%
+	% top:
+	%
+	\newcommand{\slopeTa}{176.1639851269}
+	\newcommand{\slopeTaLegend}{-0.80}
+
+	\newcommand{\slopeTb}{87.7510651959}
+	\newcommand{\slopeTbLegend}{-0.76}
+
+	\newcommand{\slopeTc}{37.8156703237}
+	\newcommand{\slopeTcLegend}{-0.72}
+
+	%
+	% bottom:
+	%
+	\newcommand{\slopeBb}{-18.3708671152}
+	\newcommand{\slopeBbLegend}{-0.64}
+
+	\newcommand{\slopeBc}{-54.4576795618}
+	\newcommand{\slopeBcLegend}{-0.60}
+	%
+
+	% plot variables (since we generate the plot two times for the legends)
+	\newcommand{\axisYmin}{-40}
+	\newcommand{\axisYmax}{60}
+	\newcommand{\axisXmin}{0}
+	\newcommand{\axisXmax}{0.5}
+
+
+	%%%%%%%%%%%%%%%%%%
+	%   top legend   %
+	%%%%%%%%%%%%%%%%%%
+	\begin{axis}[
+   					xmin  = \axisXmin,
+   					xmax  = \axisXmax,
+% 					xtick = {0.0, 0.1,..., 0.50},
+					xmajorgrids,
+					xlabel = {Time [\SI{}{\second}]},
+  					ymin  = \axisYmin,
+  					ymax  = \axisYmax,
+ 					ytick = {-40, -20, 0, 20, 40, 60},
+					ylabel = {Concentration [\SI{}{\nano\mol}]},
+					ymajorgrids,
+					% zerofill the y-axis ticks
+					xticklabel style = {
+						/pgf/number format/fixed,
+						/pgf/number format/fixed zerofill,
+						/pgf/number format/precision = 1
+					},
+ 					legend cell align = {right},	% left align the legend entries
+					legend pos = north west,
+					% legend with two colums
+% 					legend columns = 2,
+% 					legend style = 	{
+% 										/tikz/column 2/.style = 
+% 										{
+% 											column sep=5pt,
+% 										},
+% 									}
+				]
+
+		% plot the data (top three plots)
+		%
+		% plot #1
+		\addplot[
+					loosely dashdotted,
+					no marks,
+				]
+				{x*\slopeTa};	% top -> A
+		\addlegendentry{\SI{\slopeTaLegend}{\volt}}
+
+
+
+		% plot #2
+		\addplot[
+					dashdotted,
+					no marks,
+				]
+				{x*\slopeTb};	% top -> B
+		\addlegendentry{\SI{\slopeTbLegend}{\volt}}
+
+
+		% plot #3
+		\addplot[
+					dotted,
+					no marks,
+				]
+				{x*\slopeTc};	% top -> C
+		\addlegendentry{\SI{\slopeTcLegend}{\volt}}
+	\end{axis}
+
+
+
+	%%%%%%%%%%%%%%%%%
+	% bottom legend %
+	%%%%%%%%%%%%%%%%%
+	\begin{axis}[
+   					xmin  = \axisXmin,
+   					xmax  = \axisXmax,
+					xtick = {0.0, 0.1,..., 0.50},
+  					xticklabels = {,,},	% suppress x-ticks (drawn at upper plot)
+  					yticklabels = {,,},	% suppress y-ticks (drawn at upper plot)
+% 					xmajorgrids,
+% 					xlabel = {Time (\SI{}{\second})},
+  					ymin  = \axisYmin,
+  					ymax  = \axisYmax,
+% %   					ytick = {0.1, 0.13,..., 0.22},
+% 					ylabel = {Concentration (\SI{}{\micro\Molar})},
+% 					ymajorgrids,
+% 					% zerofill the y-axis ticks
+% 					xticklabel style = {
+% 						/pgf/number format/fixed,
+% 						/pgf/number format/fixed zerofill,
+% 						/pgf/number format/precision = 3
+% 					},
+ 					legend cell align = {right},	% left align the legend entries
+					legend pos = south west,
+					% legend with two colums
+% 					legend columns = 2,
+% 					legend style = 	{
+% 										/tikz/column 2/.style = 
+% 										{
+% 											column sep=5pt,
+% 										},
+% 									}
+				]
+
+		% plot the data (bottom three plots)
+		%
+		% plot #1
+		\addplot[
+					loosely dashed,
+					no marks,
+				]
+				{x*\slopeBb};	% bottom -> B
+		\addlegendentry{\SI{\slopeBbLegend}{\volt}}
+
+		% plot #2
+		\addplot[
+					dashed,
+					no marks,
+				]
+				{x*\slopeBc};	% bottom -> C
+		\addlegendentry{\SI{\slopeBcLegend}{\volt}}
+
+	\end{axis}
+
+\end{tikzpicture}

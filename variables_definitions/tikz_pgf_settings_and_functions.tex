@@ -1,0 +1,120 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%							GLOBAL PLOT SETTINGS			    				%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% scaling of images (single image horizontally)
+\newcommand{\pScaleImgFactor}{0.85}
+% scale = \pScaleImgFactor
+%
+% distance between two images (horizontally)
+\newcommand{\distDblImgBetween}{20.0mm}
+%
+% initial distance to the left of two images (horizontally)
+\newcommand{\initDistDblImg}{3.5mm}
+%
+% scaling of images (two images horizontally, side by side)
+\newcommand{\pScaleImgFactorDblImage}{0.70}
+%
+% global axis style, ticks, etc
+%
+% manually set:	o) 3sec -> 3_Sec/figures/transport_studies__SCD_split_electrode_into_parts__avg_outlet
+%				o) 3sec -> 3_Sec/figures/transport_studies__SCD_split_electrode_into_parts__total_conc
+%
+\pgfplotsset{
+	every axis/.append style = 	{
+									% (x,y)-Axis font size
+									label style = 	{
+														font = \fontsize{12}{15}\selectfont,
+													},
+									%
+									% outer sep(y-axis) overwritten at:
+									%		sec3 -> mesh parameter plot
+									%
+									% x-axis label
+									xlabel style =	{
+														% distance: x-label to x-axis
+														outer sep = 3.5pt
+													},
+									% y-axis label
+									ylabel style =	{
+														% distance: y-label to y-axis
+														outer sep = -2.5pt
+													},
+									%
+									% change the (font) size of the (x.y)-axis ticks
+									tick label style = {font = \fontsize{12}{15}\selectfont},
+									%
+									% font size of legend
+									legend style = {font = \fontsize{8}{10}\selectfont},
+									%
+									% set distance: axis ticks and axis
+									xticklabel style = 	{
+															% distance: axis and axis numbers
+															outer sep = 3.5pt,
+														},
+									yticklabel style =	{outer sep = 1.5pt},
+								}
+			}
+% grid style settings
+\pgfplotsset{major grid style = {line width = 0.1 pt, dashed, draw = gray!90}}
+%
+% set the line thickness of all the plots to a certain value
+\newcommand{\pgfLineWidPlots}{0.4}
+\pgfplotsset{every axis plot/.append style = {line width = \pgfLineWidPlots mm}}
+%
+% level of detail for the contour plots
+\newcommand\samples{90}		% resolution of the contour lines	(90 ... high res)
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%						GLOBAL PARAMETERS & SETTINGS		    				%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% TABLES / ARRAYS
+\renewcommand{\arraystretch}{1.05}			% vertical distance between entries
+\newcommand{\arryDistTblCap}{5 mm}			% distance: table caption <-> table
+\newcommand{\arryDistTblTextBot}{-3.5 mm}	% distance: table <-> text below
+\captionsetup[table]{skip = 0pt}			% distance: table <-> text above
+%
+% CITATIONS (dont linebreak multiple references, e.g., when using \cite{c1, c2, c3}
+\let\oldcite\cite
+\renewcommand{\cite}[1]{\mbox{\oldcite{#1}}}
+%
+% NO LINE BREAK ENVIRONMENT
+% create an environment without pagebreak happening - code from:
+% https://tex.stackexchange.com/questions/94699/absolutely-definitely-preventing-page-break
+% usage:
+%
+% \begin{absolutelynopagebreak}
+% \lipsum[1-3]\lipsum*[4]
+% \end{absolutelynopagebreak}
+%
+\newenvironment{absolutelynopagebreak}
+	{\par\nobreak\vfil\penalty0\vfilneg
+		\vtop\bgroup}
+	{\par\xdef\tpd{\the\prevdepth}\egroup
+		\prevdepth = \tpd}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%									colors								 		%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%\definecolor{red}{RGB} {255, 0, 0}	% red
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%								SI UNITS					    				%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% celsius unit for SI unit package
+\newcommand{\celsiustemp}[1]{\SI{#1}{\celsius}}
+%\celsiustemp{10}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
