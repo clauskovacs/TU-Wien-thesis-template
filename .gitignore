@@ -5,6 +5,7 @@
 *.auxlock
 *.bbl
 *.blg
+*.brf
 *.lof
 *.log
 *.lot
